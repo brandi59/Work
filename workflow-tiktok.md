@@ -14,6 +14,7 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 - Voix clonée « Brandon » : `64854779388d437591ac30c617816cc4`.
 - 5–10 premières secondes (hook) : modèle acting **drama-3**, dynamique mais naturel, jamais crié.
 - Reste de la vidéo : énergique, émotif, dans l'action, très naturel (pas fade).
+- Intonations gérées librement par Claude pour une voix attractive et dynamique ; rythme global un peu accéléré.
 - Pas de retranscription Fish Audio de la voix off.
 
 ## 3. Montage (AI Producer)
@@ -22,6 +23,7 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 3. Voix à vitesse naturelle (1.1x max).
 4. Récupérer la vidéo source depuis le workspace du projet (pas via Drive).
 5. Format 9:16 : image recadrée au centre, fond flou.
+   - **Avant de recadrer : repérer où sont les sous-titres d'origine (texte incrusté) et ajuster le recadrage pour les couper entièrement — plus aucun bout visible.** À vérifier sur plusieurs images de la vidéo.
 6. Ralentir la vidéo pour qu'elle dure autant que l'audio.
 7. Couper le son d'origine, mettre la voix.
 8. Exporter en MP4 9:16 et l'envoyer.
