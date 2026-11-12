@@ -19,12 +19,12 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 
 ## 3. Montage (AI Producer)
 1. Recevoir l'audio + l'ID du projet AI Producer.
-2. Retirer les blancs de l'audio.
+2. Retirer **tous** les blancs de l'audio : aucune pause de plus de ~0,1 s, même entre les phrases (sinon la vidéo perd en dynamisme).
 3. Voix à vitesse naturelle (1.1x max).
 4. Récupérer la vidéo source depuis le workspace du projet (pas via Drive).
 5. Format 9:16 : image recadrée au centre, fond flou.
    - **Avant de recadrer : repérer où sont les sous-titres d'origine (texte incrusté) et ajuster le recadrage pour les couper entièrement — plus aucun bout visible.** À vérifier sur plusieurs images de la vidéo.
-6. Ralentir la vidéo pour qu'elle dure autant que l'audio.
+6. Ajuster la vitesse de la vidéo (ralentir ou accélérer) pour qu'elle dure autant que l'audio.
 7. Couper le son d'origine, mettre la voix.
 8. Exporter en MP4 9:16 et l'envoyer.
 
@@ -38,11 +38,15 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 - Toujours **dans l'image de l'anime** (pas dans le fond flou), bien visibles sans être trop gros.
 
 ## 5. Bruitages
-- Ponctuels, variés, calés précisément sur les images (pas que des woosh).
-- Whoosh quand un personnage entre dans l'image.
-- Coups / impacts discrets pendant les combats.
+- **Peu de bruitages** : uniquement sur des événements visuels, jamais en continu ni sur chaque mot.
+- À sonoriser :
+  - un zoom ou un encadrement (cercle, cadre) qui apparaît → bruit d'appareil photo possible ;
+  - une flèche qui apparaît → petit pop ;
+  - certains changements de plan (pas tous) → whoosh discret ;
+  - combats : coups / impacts discrets.
+- Ne pas sonoriser un élément coupé par le recadrage.
 - Sons trouvés librement par Claude, même hors bibliothèque AI Producer.
-- Volume : celui de la vidéo Gogito SSJ10 v2.
+- Volume : celui de la vidéo Gogito SSJ10 v2, toujours sous la voix.
 
 ## 6. Miniature
 - Remplacer le texte anglais de la 1re image par une miniature en français.
