@@ -42,6 +42,9 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 - Toujours **dans l'image de l'anime** (pas dans le fond flou), bien visibles sans être trop gros.
 
 ## 5. Bruitages
+- **Entre 10 et 15 bruitages maximum par vidéo** : aucun bruitage inutile.
+- Un petit « POC » à chaque flèche ou encadrement qui apparaît à l'écran.
+- Le reste : quelques transitions bien placées (changement de scène important, révélation).
 - Ponctuels, variés, calés précisément sur les images (pas que des woosh).
 - Whoosh quand un personnage entre dans l'image.
 - Coups / impacts discrets pendant les combats.
