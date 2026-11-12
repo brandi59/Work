@@ -43,7 +43,10 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 
 ## 5. Bruitages
 - **Claude est autonome sur les bruitages** : les ajouter sans redemander.
-- **Un bruitage à chaque transition d'image** : détecter les changements de plan (ffmpeg, scene > 0.25), vérifier visuellement, puis caler un son pile sur la coupe — alterner whoosh/swoosh, déclic d'appareil photo (≈ 1 coupe sur 3, plans fixes / visages), pop quand un cadre ou une icône apparaît.
+- **Peu de bruitages (≈ 1 toutes les 5 s, ~12-15 pour 70 s), tous logiques avec l'image** — pas un son sur chaque coupe.
+  - Changements d'image marquants : déclic d'appareil photo ; ouverture / saut dans le temps : whoosh.
+  - Son en rapport avec ce qu'on voit ou entend : orage sur la pluie/l'éclair, zoom d'objectif sur un plan qui zoome, bip de mise au point quand un cadre rouge apparaît, impact sur une attaque, nappe angoissante sur un moment grave, boom grave sur la révélation finale.
+  - Repérer les coupes avec ffmpeg (scene > 0.25) et vérifier visuellement avant de choisir.
 - Sources : bibliothèque AI Producer en priorité, sinon Mixkit (mixkit.co, gratuit, sans attribution).
 - Ponctuels, variés, calés précisément sur les images (pas que des woosh).
 - Whoosh quand un personnage entre dans l'image.
