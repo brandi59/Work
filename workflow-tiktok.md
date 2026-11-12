@@ -37,6 +37,8 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 - Parfaitement synchronisés, mots identiques à la voix, sans clignotement.
 - Toujours **dans l'image de l'anime** (pas dans le fond flou), bien visibles sans être trop gros.
 - Méthode qui marche : incrustation ffmpeg (ASS, police Anton via npm `@fontsource/anton`), minutage mot à mot de la transcription AI Producer, puis nouveau projet AI Producer pour les bruitages et l'export.
+- **Placer les sous-titres pile sur la zone floue des sous-titres d'origine retirés**, pour cacher le flou.
+- Ne démarrer les sous-titres qu'après la miniature (1re image).
 - Étiquettes incrustées en langue étrangère (ex. « Antes / Ahora ») : les recouvrir par leur traduction française.
 
 ## 5. Bruitages
@@ -51,6 +53,7 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 
 ## 6. Miniature
 - Remplacer le texte anglais de la 1re image par une miniature en français.
+- Si la 1re image a un cadre (ex. carré jaune) : nettoyer les traces et y écrire le titre de la vidéo en français (Anton, noir, 2 lignes).
 - Vidéos JoJo : fond rose et noir quadrillé sur toute l'image.
 
 ## 7. Publication
