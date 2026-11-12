@@ -1,4 +1,5 @@
 """Detect outlined subtitle glyphs (white/green/yellow fill + pure black outline)."""
+import os
 import cv2
 import numpy as np
 
@@ -34,7 +35,7 @@ def text_mask(frame, y0, y1, grow=2):
     area = stats[:, cv2.CC_STAT_AREA]
     hgt = stats[:, cv2.CC_STAT_HEIGHT]
     wid = stats[:, cv2.CC_STAT_WIDTH]
-    ok = (ratio > 0.45) & (area >= 6) & (area < 6000) & (hgt < 90) & (wid < 400)
+    ok = (ratio > float(os.environ.get("DESUB_RATIO", "0.45"))) & (area >= 6) & (area < 6000) & (hgt < 90) & (wid < 400)
     ok[0] = False
     glyphs = (ok[lab] * 255).astype(np.uint8)
     if not glyphs.any():
