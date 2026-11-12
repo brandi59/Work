@@ -43,6 +43,7 @@ Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
 - Calés gratuitement sur le texte traduit + pauses de la voix.
 - Parfaitement synchronisés, mots identiques à la voix, sans clignotement.
 - Toujours **dans l'image de l'anime** (pas dans le fond flou), bien visibles sans être trop gros.
+- Ne démarrer les sous-titres qu'après la miniature (1re image).
 
 ## 5. Bruitages
 - **Entre 10 et 15 bruitages maximum par vidéo** : aucun bruitage inutile.
@@ -56,6 +57,7 @@ Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
 
 ## 6. Miniature
 - Remplacer le texte anglais de la 1re image par une miniature en français.
+- Si la 1re image a un cadre (ex. carré jaune) : nettoyer les traces du texte d'origine et y écrire le titre de la vidéo en français (police Anton, noir, 2 lignes).
 - Vidéos JoJo : fond rose et noir quadrillé sur toute l'image.
 
 ## 7. Publication
