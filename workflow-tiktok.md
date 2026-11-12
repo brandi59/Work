@@ -36,6 +36,8 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 - Calés gratuitement sur le texte traduit + pauses de la voix.
 - Parfaitement synchronisés, mots identiques à la voix, sans clignotement.
 - Toujours **dans l'image de l'anime** (pas dans le fond flou), bien visibles sans être trop gros.
+- Méthode qui marche : incrustation ffmpeg (ASS, police Anton via npm `@fontsource/anton`), minutage mot à mot de la transcription AI Producer, puis nouveau projet AI Producer pour les bruitages et l'export.
+- Étiquettes incrustées en langue étrangère (ex. « Antes / Ahora ») : les recouvrir par leur traduction française.
 
 ## 5. Bruitages
 - **Claude est autonome sur les bruitages** : les ajouter sans redemander.
