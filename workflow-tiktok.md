@@ -4,6 +4,8 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 
 > Dès qu'un lien vidéo est envoyé : lancer tout le workflow automatiquement, sans redemander.
 
+> 📁 Toutes les tâches détaillées, étape par étape, sont dans le dossier [`creation-video/`](creation-video/README.md).
+
 ## 1. Texte
 1. Recevoir le lien TikTok de la vidéo.
 2. Récupérer la transcription via **Tokscript**.
