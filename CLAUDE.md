@@ -34,6 +34,8 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 
 **Durée finale : toujours plus de 61 secondes.**
 
+**Fichiers :** ne jamais commiter les vidéos, audios ni miniatures dans le dépôt (`livrables/` et les médias sont ignorés par `.gitignore`). Les envoyer directement à l'utilisateur ; le dépôt ne contient que le workflow et les scripts.
+
 ## 4. Sous-titres
 - Une ligne de 2–3 mots, grosses capitales très grasses et serrées.
 - Blanc, contour noir épais, mot prononcé en jaune.
