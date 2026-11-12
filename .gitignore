@@ -1,1 +1,8 @@
 __pycache__/
+# Médias : jamais dans le dépôt (envoyés directement)
+*.mp4
+*.mov
+*.mp3
+*.wav
+*.m4a
+livrables/
