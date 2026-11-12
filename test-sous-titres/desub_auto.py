@@ -10,9 +10,9 @@ def find_zone(src, samples=60):
     rows = np.zeros(H)
     for i in np.linspace(0, n - 1, samples).astype(int):
         cap.set(1, i); ok, f = cap.read()
-        if ok: rows += text_mask(f, int(H * .08), int(H * .95)).any(1)
+        if ok: rows += text_mask(f, int(H * .02), int(H * .98)).any(1)
     hit = np.nonzero(rows >= 2)[0]
-    if not len(hit): return int(H * .35), int(H * .95)
+    if not len(hit): return int(H * .02), int(H * .98)
     return max(0, hit.min() - 30), min(H, hit.max() + 30)
 
 def work(a):
