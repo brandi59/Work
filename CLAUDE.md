@@ -17,16 +17,17 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 - Intonations gérées librement par Claude pour une voix attractive et dynamique ; rythme global un peu accéléré.
 - Pas de retranscription Fish Audio de la voix off.
 
-## 3. Montage (AI Producer)
-1. Recevoir l'audio + l'ID du projet AI Producer.
-2. Retirer les blancs de l'audio.
+## 3. Montage (autonome, sans AI Producer)
+Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
+1. Télécharger la vidéo source depuis le lien TikTok avec **yt-dlp** :
+   `pip install yt-dlp` si besoin, puis `yt-dlp -o source.mp4 -f "best[ext=mp4]/best" <lien>` (dans le scratchpad).
+2. Retirer les blancs de l'audio (ffmpeg `silenceremove`).
 3. Voix à vitesse naturelle (1.1x max).
-4. Récupérer la vidéo source depuis le workspace du projet (pas via Drive).
+4. Monter localement avec **ffmpeg**.
 5. **Retirer les sous-titres d'origine (texte incrusté)** au lieu de les couper au recadrage :
    - `pip install opencv-python-headless numpy` si besoin, puis
      `python3 test-sous-titres/desub_auto.py <source.mp4> <source_sans_st.mp4>` (repère seul la zone des sous-titres, ~1 min par minute de vidéo).
-   - Vérifier sur plusieurs images qu'il ne reste aucun sous-titre ; sinon ajuster les seuils dans `test-sous-titres/detect.py`.
-   - Renvoyer la vidéo nettoyée dans le workspace du projet et l'utiliser pour la suite.
+   - Vérifier sur plusieurs images qu'il ne reste aucun sous-titre ; sinon refaire une passe ciblée avec `DESUB_RATIO=0.18` (ou ajuster les seuils dans `test-sous-titres/detect.py`).
 6. Format 9:16 : image recadrée au centre (sans couper pour les sous-titres), fond flou.
 7. Ralentir la vidéo pour qu'elle dure autant que l'audio.
 8. Couper le son d'origine, mettre la voix.
