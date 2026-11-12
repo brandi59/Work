@@ -22,11 +22,15 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 2. Retirer les blancs de l'audio.
 3. Voix à vitesse naturelle (1.1x max).
 4. Récupérer la vidéo source depuis le workspace du projet (pas via Drive).
-5. Format 9:16 : image recadrée au centre, fond flou.
-   - **Avant de recadrer : repérer où sont les sous-titres d'origine (texte incrusté) et ajuster le recadrage pour les couper entièrement — plus aucun bout visible.** À vérifier sur plusieurs images de la vidéo.
-6. Ralentir la vidéo pour qu'elle dure autant que l'audio.
-7. Couper le son d'origine, mettre la voix.
-8. Exporter en MP4 9:16 et l'envoyer.
+5. **Détection des sous-titres d'origine** (texte incrusté) :
+   - Lancer `python3 tools/detect_subtitles.py video.mp4 --out <dossier>` : analyse ~24 images réparties sur toute la vidéo, renvoie les bandes de sous-titres (en px et en %) et un recadrage qui les exclut (`crop=…` ffmpeg).
+   - Ouvrir `<dossier>/planche.jpg` (rouge = sous-titres détectés, vert = zone gardée) et vérifier à l'œil qu'aucun bout de texte ne dépasse dans le vert. Si besoin, élargir la marge à la main.
+   - Pas de sous-titres détectés → recadrage normal.
+6. Format 9:16 : image (recadrée selon l'étape 5) au centre, fond flou.
+   - **Plus aucun bout des sous-titres d'origine visible**, ni dans l'image ni dans le fond flou (le fond flou est fait à partir de l'image déjà recadrée).
+7. Ralentir la vidéo pour qu'elle dure autant que l'audio.
+8. Couper le son d'origine, mettre la voix.
+9. Exporter en MP4 9:16 et l'envoyer.
 
 **Durée finale : toujours plus de 61 secondes.**
 
