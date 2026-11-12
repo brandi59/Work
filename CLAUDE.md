@@ -22,8 +22,8 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 2. Retirer les blancs de l'audio.
 3. Voix à vitesse naturelle (1.1x max).
 4. Récupérer la vidéo source depuis le workspace du projet (pas via Drive).
-5. Format 9:16 : image recadrée au centre, fond flou.
-   - **Avant de recadrer : repérer où sont les sous-titres d'origine (texte incrusté) et ajuster le recadrage pour les couper entièrement — plus aucun bout visible.** À vérifier sur plusieurs images de la vidéo.
+5. Format 9:16 : image entière au centre, fond flou.
+   - **Sous-titres d'origine (texte incrusté) : les retirer avec du FLOU (pas en recadrant).** Repérer leur position plan par plan (elle peut changer en cours de vidéo) et flouter fortement cette bande — plus aucune lettre lisible. À vérifier sur plusieurs images de la vidéo.
 6. Ralentir la vidéo pour qu'elle dure autant que l'audio.
 7. Couper le son d'origine, mettre la voix.
 8. Exporter en MP4 9:16 et l'envoyer.
