@@ -28,6 +28,7 @@ Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
    - `pip install opencv-python-headless numpy` si besoin, puis
      `python3 test-sous-titres/desub_auto.py <source.mp4> <source_sans_st.mp4>` (repère seul la zone des sous-titres, ~1 min par minute de vidéo).
    - Vérifier sur plusieurs images qu'il ne reste aucun sous-titre ; sinon refaire une passe ciblée avec `DESUB_RATIO=0.18` (ou ajuster les seuils dans `test-sous-titres/detect.py`).
+   - Sous-titres blancs à ombre portée (sans contour noir) : `Y0=… Y1=… python3 test-sous-titres/desub_zone.py <in.mp4> <out.mp4>` (bande fixe, boîte centrée sur le mot).
 6. Format 9:16 : image recadrée au centre (sans couper pour les sous-titres), fond flou.
 7. Ralentir la vidéo pour qu'elle dure autant que l'audio.
 8. Couper le son d'origine, mettre la voix.
