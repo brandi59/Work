@@ -32,6 +32,10 @@ Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
 7. Ralentir la vidéo pour qu'elle dure autant que l'audio.
 8. Couper le son d'origine, mettre la voix.
 9. Exporter en MP4 9:16 et l'envoyer.
+10. **Avant chaque envoi, vérifier le son jusqu'à la fin** :
+    - `ffprobe` : la piste audio doit durer autant que la piste vidéo.
+    - Mesurer le volume (`volumedetect`) sur les 2 dernières secondes : la fin de la voix doit être audible.
+    - Ne jamais mettre `loudnorm` directement dans un `amix ... duration=first` : il coupe ~3 s à la fin. Normaliser la voix à part (avec `apad`) ou ajouter `apad` avant `loudnorm`.
 
 **Durée finale : toujours plus de 61 secondes.**
 
