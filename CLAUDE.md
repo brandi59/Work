@@ -10,12 +10,21 @@ Contenu : Dragon Ball / JoJo façon « Le savais-tu ? », repris de vidéos angl
 3. Traduire en français et l'envoyer.
 4. Garder le texte traduit **tel quel** (pas d'accroche, d'apport perso ni de boucle ajoutés).
 
-## 2. Voix off (Fish Audio)
-- Voix clonée « Brandon » : `64854779388d437591ac30c617816cc4`.
-- 5–10 premières secondes (hook) : modèle acting **drama-3**, dynamique mais naturel, jamais crié.
-- Reste de la vidéo : énergique, émotif, dans l'action, très naturel (pas fade).
-- Intonations gérées librement par Claude pour une voix attractive et dynamique ; rythme global un peu accéléré.
+## 2. Voix off (Fish Audio) — recette « Bishop/Euphoria » (validée le 17/11, à utiliser pour TOUTES les voix off)
+**Génération**
+- Voix clonée « Brandon » : `64854779388d437591ac30c617816cc4`, modèle **s2.1-pro**.
+- Accroche (2 premières phrases) : générée à part avec la balise `[excited]`.
+- Reste du script : un seul appel, **sans balise**.
+- Aucun autre réglage (pas de vitesse, pitch ou émotion en plus).
 - Pas de retranscription Fish Audio de la voix off.
+
+**Après Fish Audio (ffmpeg)**
+- Suppression des blancs : pauses ≥ 60 ms coupées, 25 ms gardés de chaque côté.
+- Égalisation : coupe sous 90 Hz, −3,5 dB à 220 Hz, −1,5 dB à 500 Hz, +3,5 dB à 3200 Hz, +4 dB au-dessus de 8500 Hz.
+- Débruitage léger, de-esser, compression douce (seuil −22 dB, ratio 2,5).
+- Normalisation à −13 LUFS.
+- Exemple de chaîne : `highpass=f=90,equalizer=f=220:t=q:w=1:g=-3.5,equalizer=f=500:t=q:w=1:g=-1.5,equalizer=f=3200:t=q:w=1:g=3.5,highshelf=f=8500:g=4,afftdn=nr=8,deesser,acompressor=threshold=-22dB:ratio=2.5:attack=10:release=150,loudnorm=I=-13:TP=-1.5:LRA=11`
+- Vidéo Diego (17/11) : voix accélérée de 7 % au montage (`atempo=1.07`).
 
 ## 3. Montage (autonome, sans AI Producer)
 Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
