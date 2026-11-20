@@ -42,7 +42,7 @@ Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
      (`--overlay` pour chaque texte incrusté ponctuel : couleur yellow|pink|blue|any). Lancer en arrière-plan **dès le téléchargement**, en parallèle du texte et de la voix.
    - Zone la plus petite possible (juste les sous-titres + leur halo) : le temps dépend de sa taille.
    - Vérifier sur une planche d'images qu'il ne reste ni lettre ni halo.
-   - Comparatif (JoJo 90 s, 4 CPU) : `desub_lama.py` (LaMa 512) 1 h 47 ; `desub_rapide.py` 44 min (même propreté). MI-GAN testé : 5x plus rapide mais bavures → refusé.
+   - Comparatif (JoJo 90 s, 4 CPU) : `desub_lama.py` (LaMa 512) 1 h 47 ; `desub_rapide.py` 38 min (même propreté, ~25 % des images réutilisées). MI-GAN testé : 5x plus rapide mais bavures → refusé.
 6. Format 9:16 : image recadrée au centre (sans couper pour les sous-titres), fond flou.
 7. Ralentir la vidéo pour qu'elle dure autant que l'audio.
 8. Couper le son d'origine, mettre la voix.
