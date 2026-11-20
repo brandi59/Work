@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from multiprocessing import Pool
 from desub_lama import ov_mask
 
-MARGIN_Y, MARGIN_X, REUSE = 40, 56, 2.0
+MARGIN_Y, MARGIN_X, REUSE = 40, 56, 3.0  # REUSE : écart moyen max du décor AUTOUR de la zone pour réutiliser
 
 def worker(a):
     src, s, e, dst, model, zones, ovs = a
@@ -43,7 +43,7 @@ def worker(a):
                 key = (x0, y0, x1, y1); res = None
                 if key in cache:
                     pc, pm, pr = cache[key]
-                    if np.array_equal(pm, mc) and np.abs(crop.astype(np.int16) - pc.astype(np.int16)).mean() < REUSE: res = pr
+                    if np.array_equal(pm, mc) and np.abs(crop.astype(np.int16) - pc.astype(np.int16))[mc == 0].mean() < REUSE: res = pr
                 if res is None:
                     hh, ww = mc.shape; Hp, Wp = (hh + 7) // 8 * 8, (ww + 7) // 8 * 8
                     c2 = cv2.copyMakeBorder(crop, 0, Hp - hh, 0, Wp - ww, cv2.BORDER_REFLECT)

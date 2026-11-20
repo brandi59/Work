@@ -34,13 +34,15 @@ Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
 3. Voix à vitesse naturelle (1.1x max).
 4. Monter localement avec **ffmpeg**.
 5. **Retirer les sous-titres d'origine (texte incrusté)** au lieu de les couper au recadrage — méthode validée (vidéo JoJo, 20/11) :
-   - **LaMa (inpainting qui reconstruit le décor)**, jamais de flou ni d'inpainting OpenCV seul (traces visibles).
+   - **Toujours la méthode la plus rapide ET la plus propre** : `test-sous-titres/desub_rapide.py` (LaMa « manga », bande serrée autour de la zone, 4 processus, réutilisation des images au décor identique). Jamais de flou ni d'inpainting OpenCV seul (traces visibles).
    - `pip install onnxruntime huggingface_hub opencv-python-headless numpy`, modèle dans le scratchpad :
-     `HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import hf_hub_download as d; d('Carve/LaMa-ONNX','lama_fp32.onnx',local_dir='.')"`
+     `HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import hf_hub_download as d; d('ogkalu/lama-manga-onnx-dynamic','lama-manga-dynamic.onnx',local_dir='.')"`
    - Repérer la zone où apparaissent les sous-titres (planche 1 image/s) et **effacer cette zone sur chaque image** (ne pas dépendre d'un détecteur : il rate les mots à halo) :
-     `python3 test-sous-titres/desub_lama.py source.mp4 source_sans_st.mp4 lama_fp32.onnx --zone x0,y0,x1,y1 --overlay t0,t1,x0,y0,x1,y1,couleur`
-     (`--overlay` pour chaque texte incrusté ponctuel : couleur yellow|pink|blue|any). Lancer en arrière-plan (~1 h 45 pour 90 s).
-   - Vérifier sur une planche d'images qu'il ne reste ni lettre ni halo. (Anciens scripts `desub_auto.py`/`detect.py` : seulement pour sous-titres blancs à contour noir.)
+     `python3 test-sous-titres/desub_rapide.py source.mp4 source_sans_st.mp4 lama-manga-dynamic.onnx --zone x0,y0,x1,y1 --overlay t0,t1,x0,y0,x1,y1,couleur`
+     (`--overlay` pour chaque texte incrusté ponctuel : couleur yellow|pink|blue|any). Lancer en arrière-plan **dès le téléchargement**, en parallèle du texte et de la voix.
+   - Zone la plus petite possible (juste les sous-titres + leur halo) : le temps dépend de sa taille.
+   - Vérifier sur une planche d'images qu'il ne reste ni lettre ni halo.
+   - Comparatif (JoJo 90 s, 4 CPU) : `desub_lama.py` (LaMa 512) 1 h 47 ; `desub_rapide.py` 44 min (même propreté). MI-GAN testé : 5x plus rapide mais bavures → refusé.
 6. Format 9:16 : image recadrée au centre (sans couper pour les sous-titres), fond flou.
 7. Ralentir la vidéo pour qu'elle dure autant que l'audio.
 8. Couper le son d'origine, mettre la voix.
