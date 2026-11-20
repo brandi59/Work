@@ -33,10 +33,14 @@ Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
 2. Retirer les blancs de l'audio (ffmpeg `silenceremove`).
 3. Voix à vitesse naturelle (1.1x max).
 4. Monter localement avec **ffmpeg**.
-5. **Retirer les sous-titres d'origine (texte incrusté)** au lieu de les couper au recadrage :
-   - `pip install opencv-python-headless numpy` si besoin, puis
-     `python3 test-sous-titres/desub_auto.py <source.mp4> <source_sans_st.mp4>` (repère seul la zone des sous-titres, ~1 min par minute de vidéo).
-   - Vérifier sur plusieurs images qu'il ne reste aucun sous-titre ; sinon refaire une passe ciblée avec `DESUB_RATIO=0.18` (ou ajuster les seuils dans `test-sous-titres/detect.py`).
+5. **Retirer les sous-titres d'origine (texte incrusté)** au lieu de les couper au recadrage — méthode validée (vidéo JoJo, 20/11) :
+   - **LaMa (inpainting qui reconstruit le décor)**, jamais de flou ni d'inpainting OpenCV seul (traces visibles).
+   - `pip install onnxruntime huggingface_hub opencv-python-headless numpy`, modèle dans le scratchpad :
+     `HF_HUB_DISABLE_XET=1 python3 -c "from huggingface_hub import hf_hub_download as d; d('Carve/LaMa-ONNX','lama_fp32.onnx',local_dir='.')"`
+   - Repérer la zone où apparaissent les sous-titres (planche 1 image/s) et **effacer cette zone sur chaque image** (ne pas dépendre d'un détecteur : il rate les mots à halo) :
+     `python3 test-sous-titres/desub_lama.py source.mp4 source_sans_st.mp4 lama_fp32.onnx --zone x0,y0,x1,y1 --overlay t0,t1,x0,y0,x1,y1,couleur`
+     (`--overlay` pour chaque texte incrusté ponctuel : couleur yellow|pink|blue|any). Lancer en arrière-plan (~1 h 45 pour 90 s).
+   - Vérifier sur une planche d'images qu'il ne reste ni lettre ni halo. (Anciens scripts `desub_auto.py`/`detect.py` : seulement pour sous-titres blancs à contour noir.)
 6. Format 9:16 : image recadrée au centre (sans couper pour les sous-titres), fond flou.
 7. Ralentir la vidéo pour qu'elle dure autant que l'audio.
 8. Couper le son d'origine, mettre la voix.
@@ -53,6 +57,15 @@ Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
 - Parfaitement synchronisés, mots identiques à la voix, sans clignotement.
 - Toujours **dans l'image de l'anime** (pas dans le fond flou), bien visibles sans être trop gros.
 - Ne démarrer les sous-titres qu'après la miniature (1re image).
+- Si l'utilisateur demande « les mêmes sous-titres que l'original » : les refaire en français dans le style d'origine (ex. JoJo 20/11 : un mot à la fois, minuscules, Fredoka Bold penchée, dégradé de couleur par mot, ombre noire + halo, centré à l'emplacement des anciens) avec `outils/incruster_mots.py` + `outils/wordimg.py`.
+
+**Outils (dossier `outils/`)**
+- `aligner_mots.py` : timing mot à mot gratuit (Whisper local + mots exacts du texte traduit) → `mots.json`.
+- `sous_titres_ass.py` : sous-titres du workflow (Anton) en ASS.
+- `wordimg.py` + `incruster_mots.py` : sous-titres façon original, incrustés image par image.
+- `miniature_jojo.py` : miniature JoJo (quadrillé rose/noir, titre Anton noir 2 lignes).
+- Polices (scratchpad `fonts/`) : Anton et Fredoka depuis `raw.githubusercontent.com/google/fonts/main/ofl/...`.
+- Bruitages : API Freesound (`freesound.org/apiv2/search/text/`, aperçus `preview-hq-mp3`).
 
 ## 5. Bruitages
 - **Entre 10 et 15 bruitages maximum par vidéo** : aucun bruitage inutile.
@@ -72,3 +85,6 @@ Ne pas demander d'ID de projet : tout se fait à partir du lien TikTok.
 ## 7. Publication
 - Écrire une description TikTok avec 4 hashtags.
 - Ne jamais mettre `#whattowatch` (ajouté à la main).
+
+## Historique
+- **20/11 — JoJo « Pourquoi JoJo est si dur à recommander ? »** (@tuan.khan0) : texte et timing dans `projets/jojo-recommander/`. Voix 89,6 s, vidéo ×1,01, miniature 0,4 s, 13 bruitages Freesound, sous-titres style original (V3), effacement LaMa zone `255,830,825,952` + 3 textes incrustés.
